@@ -49,20 +49,15 @@ openApiGenerate {
     apiPackage = "com.pohancenik.gitcrawler.external.out.github.api"
     modelPackage = "com.pohancenik.gitcrawler.external.out.github.model"
     configOptions = [
-            //useJakartaEe  : "true",
             useTags       : "true",
-            //interfaceOnly : "true"
             useSpringBoot3: "true",
     ]
 }
 
 // configure the compiler args and dependencies
-//compileJava.dependsOn tasks.openApiGenerate
 compileJava {
     dependsOn(tasks.openApiGenerate)
-    options.compilerArgs += [
-            '-Amapstruct.defaultComponentModel=spring'
-    ]
+    options.compilerArgs += ['-Amapstruct.defaultComponentModel=spring']
 }
 
 sourceSets {

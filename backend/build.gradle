@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '8.13'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id "org.openapi.generator" version "7.12.0"
+}
+
+group = 'com.pohancenik'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
+    //implementation 'io.swagger.core.v3:swagger-annotations:2.2.29'
+    implementation 'io.swagger.parser.v3:swagger-parser:2.1.25'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mapstruct:mapstruct:1.6.3'
+
+    // annotation processors
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    // testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+openApiGenerate {
+    generatorName = "java"
+    library = "restclient"
+    remoteInputSpec = "https://raw.githubusercontent.com/github/rest-api-description/refs/tags/v2.1.0/descriptions/api.github.com/api.github.com.json"
+    outputDir = "$buildDir/generated-sources/openapi"
+    invokerPackage = "com.pohancenik.gitcrawler.external.out.github"
+    apiPackage = "com.pohancenik.gitcrawler.external.out.github.api"
+    modelPackage = "com.pohancenik.gitcrawler.external.out.github.model"
+    configOptions = [
+            //useJakartaEe  : "true",
+            useTags       : "true",
+            //interfaceOnly : "true"
+            useSpringBoot3: "true",
+    ]
+}
+
+// configure the compiler args and dependencies
+//compileJava.dependsOn tasks.openApiGenerate
+compileJava {
+    dependsOn(tasks.openApiGenerate)
+    options.compilerArgs += [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "$buildDir/generated-sources/openapi/src/main/java"
+        }
+    }
+}

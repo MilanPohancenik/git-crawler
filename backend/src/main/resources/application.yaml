@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: git-crawler-backend
+
+server:
+  servlet:
+    context-path: "/git-crawler"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# not yet implemented ...
+git-crawler:
+  api:
+    rest:
+      api-public:
+        path: "/api/public/rest"
+      api-private:
+        path: "/api/private/rest"

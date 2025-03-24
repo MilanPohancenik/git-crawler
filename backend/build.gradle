@@ -23,10 +23,10 @@ dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
     implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-    implementation 'io.swagger.parser.v3:swagger-parser:2.1.25'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mapstruct:mapstruct:1.6.3'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
 
     // annotation processors
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
@@ -34,6 +34,7 @@ dependencies {
     // testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
 tasks.named('test') {

@@ -22,3 +22,9 @@ git-crawler:
         path: "/api/public/rest"
       api-private:
         path: "/api/private/rest"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  show-actuator: on
+#  use-management-port: true

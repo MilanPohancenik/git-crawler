@@ -1,13 +1,11 @@
 package com.pohancenik.gitcrawler.domain;
 
-import java.net.URI;
-
 public record GitRepository(
         String id,
         String name,
-        URI url,
-        URI homepage,
+        String url,
+        String homepage,
         String description,
-        String forksCount,
-        String openIssuesCount) {
+        Integer forksCount,
+        Integer openIssuesCount) {
 }

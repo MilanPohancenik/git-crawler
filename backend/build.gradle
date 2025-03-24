@@ -22,7 +22,7 @@ repositories {
 dependencies {
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
     implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
-    //implementation 'io.swagger.core.v3:swagger-annotations:2.2.29'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'io.swagger.parser.v3:swagger-parser:2.1.25'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -40,23 +40,8 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-openApiGenerate {
-    generatorName = "java"
-    library = "restclient"
-    remoteInputSpec = "https://raw.githubusercontent.com/github/rest-api-description/refs/tags/v2.1.0/descriptions/api.github.com/api.github.com.json"
-    outputDir = "$buildDir/generated-sources/openapi"
-    invokerPackage = "com.pohancenik.gitcrawler.external.out.github"
-    apiPackage = "com.pohancenik.gitcrawler.external.out.github.api"
-    modelPackage = "com.pohancenik.gitcrawler.external.out.github.model"
-    configOptions = [
-            useTags       : "true",
-            useSpringBoot3: "true",
-    ]
-}
-
 // configure the compiler args and dependencies
 compileJava {
-    dependsOn(tasks.openApiGenerate)
     options.compilerArgs += ['-Amapstruct.defaultComponentModel=spring']
 }
 

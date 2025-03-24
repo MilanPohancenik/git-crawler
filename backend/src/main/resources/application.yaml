@@ -12,8 +12,10 @@ management:
       exposure:
         include: "*"
 
-# not yet implemented ...
 git-crawler:
+  external:
+    git-hub:
+      authorization: ${GIT_HUB_AUTHORIZATION:}
   api:
     rest:
       api-public:

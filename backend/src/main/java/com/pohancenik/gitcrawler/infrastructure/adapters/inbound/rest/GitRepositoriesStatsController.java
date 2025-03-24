@@ -2,6 +2,7 @@ package com.pohancenik.gitcrawler.infrastructure.adapters.inbound.rest;
 
 import com.pohancenik.gitcrawler.application.ports.inbound.GitRepositoriesStatsUseCase;
 import com.pohancenik.gitcrawler.domain.GitRepository;
+import com.pohancenik.gitcrawler.domain.GitRepositoryStats;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,12 @@ public class GitRepositoriesStatsController {
     }
 
     @GetMapping("/top-by-pullrequest")
-    public List<GitRepository> topByPullRequests(@RequestParam int maxRecords) {
+    public List<GitRepositoryStats> topByPullRequests(@RequestParam int maxRecords) {
         return gitRepositoriesStatsUseCase.topNByPullRequests(maxRecords);
     }
 
     @GetMapping("/top-by-contribution")
-    public List<GitRepository> topByContribution(@RequestParam int maxRecords) {
+    public List<GitRepositoryStats> topByContribution(@RequestParam int maxRecords) {
         return gitRepositoriesStatsUseCase.topNByContribution(maxRecords);
     }
 

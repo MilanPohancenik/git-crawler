@@ -1,4 +1,4 @@
-package com.pohancenik.gitcrawler.domain.search;
+package com.pohancenik.gitcrawler.application.ports.outbound.git;
 
 import lombok.Builder;
 import lombok.Getter;

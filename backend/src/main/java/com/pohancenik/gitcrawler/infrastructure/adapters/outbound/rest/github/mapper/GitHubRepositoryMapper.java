@@ -1,4 +1,4 @@
-package com.pohancenik.gitcrawler.mapper;
+package com.pohancenik.gitcrawler.infrastructure.adapters.outbound.rest.github.mapper;
 
 import com.pohancenik.gitcrawler.domain.GitRepository;
 import com.pohancenik.gitcrawler.infrastructure.adapters.outbound.rest.github.model.RepositorySearchResultItem;

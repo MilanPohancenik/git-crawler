@@ -5,7 +5,7 @@ import com.pohancenik.gitcrawler.application.ports.outbound.git.SearchCriteria;
 import com.pohancenik.gitcrawler.domain.GitRepository;
 import com.pohancenik.gitcrawler.infrastructure.adapters.outbound.rest.github.model.GitHubSearchIssuesResponsePage;
 import com.pohancenik.gitcrawler.infrastructure.adapters.outbound.rest.github.model.GitHubSearchRepositoriesResponsePage;
-import com.pohancenik.gitcrawler.mapper.GitHubRepositoryMapper;
+import com.pohancenik.gitcrawler.infrastructure.adapters.outbound.rest.github.mapper.GitHubRepositoryMapper;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;

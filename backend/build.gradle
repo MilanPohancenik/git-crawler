@@ -45,11 +45,3 @@ tasks.named('test') {
 compileJava {
     options.compilerArgs += ['-Amapstruct.defaultComponentModel=spring']
 }
-
-sourceSets {
-    main {
-        java {
-            srcDir "$buildDir/generated-sources/openapi/src/main/java"
-        }
-    }
-}
